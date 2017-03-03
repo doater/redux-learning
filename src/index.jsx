@@ -17,7 +17,6 @@ class Counter extends Component{
         )
     }
 }
-
 Counter.propTypes = {
     value: PropTypes.number.isRequired,
     onIncreaseClick: PropTypes.func.isRequired,
