@@ -3,6 +3,13 @@ import ReactDOM from 'react-dom';
 import {createStore} from 'redux';
 import {Provider,connect} from 'react-redux';
 
+if(__DEV__){
+    console.log('[当前环境] 开发环境')
+}
+if(__PROD__){
+    console.log('[当前环境] 生产环境')
+}
+
 // React commponent
 class Counter extends Component{
     render(){

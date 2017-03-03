@@ -3,8 +3,12 @@ var path = require('path');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 var NyanProgressPlugin = require('nyan-progress-webpack-plugin');
+var env = process.env.NODE_ENV;
+var SOURCE_MAP = true;
+
 // 加入热重载 webpack-dev-middleware
 module.exports = {
+    devtool: SOURCE_MAP ? 'eval-source-map' : false,
     entry: {
         index: ['webpack-hot-middleware/client?reload=true', './src/index.jsx']
     },
@@ -40,6 +44,10 @@ module.exports = {
             notify: false
         }, {
             reload: false
+        }),
+        new webpack.DefinePlugin({
+            __DEV__: env === 'development',
+            __PROD__: env === 'production'
         })
     ]
 }
